@@ -13,7 +13,7 @@ public class UsuariosTestCase extends UsuariosBaseTest {
     @Feature("[GET] - Teste para buscar todos os usuários cadastrados na lista.")
     @Description("Deve retornar 200 e a lista completa de usuários cadastrados.")
     @Test
-    public void getUsuario() {
+    public void getTodosOsUsuarioCadastradosNaLista200() {
         RestAssured.given()
                     .spec(usuariosRequest)
                 .when()

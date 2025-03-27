@@ -9,17 +9,17 @@ import org.testng.annotations.Test;
 
 public class UsuariosTestCase extends UsuariosBaseTest {
 
-    @Epic("Teste de Usuarios - API")
-    @Feature("Teste o buscar todos usuarios cadastrados na lista.")
-    @Description("Deve retornar 200 e todos lista dos usuarios cadastrados.")
+    @Epic("Teste de Usuarios")
+    @Feature("[GET] - Teste para buscar todos os usuários cadastrados na lista.")
+    @Description("Deve retornar 200 e a lista completa de usuários cadastrados.")
     @Test
     public void getUsuario() {
         RestAssured.given()
-                .spec(usuariosRequest)
+                    .spec(usuariosRequest)
                 .when()
-                .get()
+                    .get()
                 .then()
-                .log().all()
-                .spec(statusOK);
+                    .log().all()
+                    .spec(statusOK);
     }
 }

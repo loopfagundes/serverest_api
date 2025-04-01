@@ -26,6 +26,20 @@ public class UsuariosTestCase extends UsuariosBaseTest {
     }
 
     @Epic("Teste de Usuarios")
+    @Feature("[GET] - Teste para buscar um usuário cadastrado na lista.")
+    @Description("Deve retornar 200 e a lista de um usuário cadastrado.")
+    @Test
+    public void getBuscarUmUsuarioCadastradoNaLista200() {
+        RestAssured.given()
+                    .spec(pathUsuariosRequest)
+                .when()
+                    .get("/" + ID_USER)
+                .then()
+                    .statusCode(HttpStatus.SC_OK)
+                    .log().all();
+    }
+
+    @Epic("Teste de Usuarios")
     @Feature("[POST] - Teste para fazer cadastrar um novo usuário")
     @Description("Deve retornar 200 e usuário cadastrado.")
     @Test

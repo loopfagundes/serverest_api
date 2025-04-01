@@ -30,16 +30,30 @@ public class UsuariosTestCase extends UsuariosBaseTest {
     @Description("Deve retornar 200 e usuário cadastrado.")
     @Test
     public void postCadastrarUmNovoUsuario201() {
-       idUser =
-        RestAssured.given()
-                    .spec(cadastrarUsuarioRequest)
-                .when()
-                    .post()
-                .then()
-                    .statusCode(HttpStatus.SC_CREATED)
-                    .log().all()
-                .extract().path("_id");
+        idUser =
+                RestAssured.given()
+                            .spec(cadastrarUsuarioRequest)
+                        .when()
+                            .post()
+                        .then()
+                            .statusCode(HttpStatus.SC_CREATED)
+                            .log().all()
+                            .extract().path("_id");
         PropertiesManager.setProperty("authorize", "id", "ID_USER", idUser);
+    }
+
+    @Epic("Teste de Usuarios")
+    @Feature("[PUT] - Teste para fazer editar um usuário cadastrado")
+    @Description("Deve retornar 200 e um usuário cadastrado foi editado.")
+    @Test
+    public void putEditarUmUsuario200() {
+        RestAssured.given()
+                    .spec(editarUsuarioRequest)
+                .when()
+                    .put("/" + ID_USER)
+                .then()
+                    .statusCode(HttpStatus.SC_OK)
+                    .log().all();
     }
 
     @Epic("Teste de Usuarios")

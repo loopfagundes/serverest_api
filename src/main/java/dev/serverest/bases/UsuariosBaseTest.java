@@ -1,7 +1,7 @@
 package dev.serverest.bases;
 
 import dev.serverest.endponits.EndpointConfig;
-import dev.serverest.stubs.CadastrarUsuarioStub;
+import dev.serverest.stubs.UsuarioStub;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
@@ -11,6 +11,7 @@ public class UsuariosBaseTest extends EndpointConfig {
     public static RequestSpecification baseUrl;
     public static RequestSpecification pathUsuariosRequest;
     public static RequestSpecification cadastrarUsuarioRequest;
+    public static RequestSpecification editarUsuarioRequest;
     protected static String idUser;
 
     @BeforeClass
@@ -18,6 +19,7 @@ public class UsuariosBaseTest extends EndpointConfig {
         baseUrl();
         pathUsuarios();
         cadastrarDoUsuario();
+        editarUsuario();
     }
 
     private void baseUrl() {
@@ -39,7 +41,16 @@ public class UsuariosBaseTest extends EndpointConfig {
         cadastrarUsuarioRequest = new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
                 .setBasePath(PATH_USUARIOS)
-                .setBody(CadastrarUsuarioStub.usuarioDto())
+                .setBody(UsuarioStub.cadastrarUsuarioDto())
+                .setContentType(ContentType.JSON)
+                .build();
+    }
+
+    private void editarUsuario() {
+        editarUsuarioRequest = new RequestSpecBuilder()
+                .setBaseUri(BASE_URI)
+                .setBasePath(PATH_USUARIOS)
+                .setBody(UsuarioStub.editarUsuarioDto())
                 .setContentType(ContentType.JSON)
                 .build();
     }

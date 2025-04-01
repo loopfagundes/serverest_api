@@ -9,6 +9,8 @@ public class EndpointConfig {
     private static final String DEFAULT_FOLDER = "url";
     private static final Properties properties = PropertiesManager.loadProperties(DEFAULT_FILE, DEFAULT_FOLDER);
 
+    protected static final String ID_USER = PropertiesManager.loadProperties("authorize", "id").getProperty("ID_USER");
+
     protected static final String BASE_URI = properties.getProperty("BASE_URI");
     protected static final String PATH_USUARIOS = properties.getProperty("PATH_USUARIOS");
 }

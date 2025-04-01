@@ -20,13 +20,13 @@ public class PropertiesManager {
         return prop;
     }
 
-    public static void setProperty(String nameFolder, String nameProp, String key, String value) throws IOException {
+    public static void setProperty(String nameFolder, String nameProp, String key, String value) {
         Properties properties = loadProperties(nameFolder, nameProp);
         properties.setProperty(key, value);
         saveProperties(nameFolder, nameProp, properties);
     }
 
-    private static void saveProperties(String nameFolder, String name, Properties properties) throws IOException {
+    private static void saveProperties(String nameFolder, String name, Properties properties) {
         Path filePath = Paths.get(DIR_PATH_PROPERTIES, nameFolder, name + ".properties");
         try (OutputStream outputStream = Files.newOutputStream(filePath)) {
             properties.store(outputStream, null);

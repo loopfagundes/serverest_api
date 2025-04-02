@@ -53,7 +53,7 @@ public class UsuariosTestCase extends UsuariosBaseTest {
                             .statusCode(HttpStatus.SC_CREATED)
                             .log().all()
                             .extract().path("_id");
-        PropertiesManager.setProperty("authorize", "id", "ID_USER", idUser);
+        PropertiesManager.setProperty("authorize", "idUser", "ID_USER", idUser);
     }
 
     @Epic("Teste de Usuarios")

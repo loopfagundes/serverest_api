@@ -1,6 +1,7 @@
-package dev.serverest.testcases.contracts.usuarios;
+package dev.serverest.testcases.contrato.usuarios;
 
 import dev.serverest.bases.UsuariosBaseTest;
+import dev.serverest.helpers.JsonSchemaValidatorHelper;
 import dev.serverest.managers.PropertiesManager;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -22,6 +23,7 @@ public class UsuariosTestCase extends UsuariosBaseTest {
                     .delete("/" + ID_USER)
                 .then()
                     .statusCode(HttpStatus.SC_OK)
+                .body(JsonSchemaValidatorHelper.validateJson("usuarios/delete_user"))
                     .log().all();
     }
 

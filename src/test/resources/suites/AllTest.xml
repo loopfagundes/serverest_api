@@ -1,14 +1,23 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite de Testes API">
-    <test name="Testes de API - Ordem Correta">
+    <test name="Teste de API - Usuarios">
         <classes>
-            <class name="dev.serverest.testcases.usuarios.UsuariosTestCase">
+            <class name="dev.serverest.testcases.contrato.usuarios.UsuariosTestCase">
                 <methods>
                     <include name="postCadastrarUmNovoUsuario201"/>
                     <include name="getBuscarTodosOsUsuarioCadastradosNaLista200"/>
                     <include name="getBuscarPorIdDoUsuarioCadastradoNaLista200"/>
                     <include name="putEditarUmUsuario200"/>
                     <include name="deleteUsuario200"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Teste de API - Login">
+        <classes>
+            <class name="dev.serverest.testcases.contrato.login.LoginTestCase">
+                <methods>
+                    <include name="efeturaLogin200"/>
                 </methods>
             </class>
         </classes>

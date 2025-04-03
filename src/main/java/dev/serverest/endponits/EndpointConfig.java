@@ -10,7 +10,9 @@ public class EndpointConfig {
     private static final Properties properties = PropertiesManager.loadProperties(DEFAULT_FILE, DEFAULT_FOLDER);
 
     protected static final String ID_USER = PropertiesManager.loadProperties("authorize", "idUser").getProperty("ID_USER");
+    protected static final String AUTH_USER = PropertiesManager.loadProperties("authorize", "auth").getProperty("AUTH");
 
     protected static final String BASE_URI = properties.getProperty("BASE_URI");
     protected static final String PATH_USUARIOS = properties.getProperty("PATH_USUARIOS");
+    protected static final String PATH_LOGIN = properties.getProperty("PATH_LOGIN");
 }

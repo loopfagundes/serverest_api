@@ -1,4 +1,4 @@
-package dev.serverest.testcases.usuarios;
+package dev.serverest.testcases.contracts.usuarios;
 
 import dev.serverest.bases.UsuariosBaseTest;
 import dev.serverest.managers.PropertiesManager;

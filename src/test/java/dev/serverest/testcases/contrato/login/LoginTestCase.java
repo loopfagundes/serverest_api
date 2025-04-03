@@ -1,6 +1,7 @@
 package dev.serverest.testcases.contrato.login;
 
 import dev.serverest.bases.LoginBaseTest;
+import dev.serverest.helpers.JsonSchemaValidatorHelper;
 import dev.serverest.managers.PropertiesManager;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -24,6 +25,7 @@ public class LoginTestCase extends LoginBaseTest {
                 .then()
                     .statusCode(HttpStatus.SC_OK)
                     .log().all()
+                    .body(JsonSchemaValidatorHelper.validateJson("login/efetura_login"))
                 .extract().path("authorization");
         PropertiesManager.setProperty("authorize", "auth", "AUTH", auth);
     }

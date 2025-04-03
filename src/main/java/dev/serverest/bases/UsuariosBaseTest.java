@@ -8,7 +8,7 @@ import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.BeforeClass;
 
 public class UsuariosBaseTest extends EndpointConfig {
-    public static RequestSpecification baseUrl;
+    public static RequestSpecification baseUriRequest;
     public static RequestSpecification pathUsuariosRequest;
     public static RequestSpecification cadastrarUsuarioRequest;
     public static RequestSpecification editarUsuarioRequest;
@@ -16,14 +16,14 @@ public class UsuariosBaseTest extends EndpointConfig {
 
     @BeforeClass
     public void setUp() {
-        baseUrl();
+        baseUri();
         pathUsuarios();
         cadastrarDoUsuario();
         editarUsuario();
     }
 
-    private void baseUrl() {
-        baseUrl = new RequestSpecBuilder()
+    private void baseUri() {
+        baseUriRequest = new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
                 .setContentType(ContentType.JSON)
                 .build();

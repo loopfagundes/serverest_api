@@ -17,7 +17,7 @@ public class LoginTestCase extends LoginBaseTest {
     @Description("Deve retornar 200 e confirmar que o usuário foi logado.")
     @Test(priority = 1)
     public void efeturaLogin200() {
-      auth =
+      token =
         RestAssured.given()
                     .spec(loginRequest)
                 .when()
@@ -27,6 +27,6 @@ public class LoginTestCase extends LoginBaseTest {
                     .log().all()
                     .body(JsonSchemaValidatorHelper.validateJson("login/efetura_login"))
                 .extract().path("authorization");
-        PropertiesManager.setProperty("authorize", "auth", "TOKEN", auth);
+        PropertiesManager.setProperty("authorize", "auth", "TOKEN", token);
     }
 }

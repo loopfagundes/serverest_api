@@ -1,4 +1,4 @@
-package dev.serverest.testcases.contrato.produtos;
+package dev.serverest.testcases.contrato;
 
 import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;

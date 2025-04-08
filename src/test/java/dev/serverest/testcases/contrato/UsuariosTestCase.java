@@ -1,4 +1,4 @@
-package dev.serverest.testcases.contrato.usuarios;
+package dev.serverest.testcases.contrato;
 
 import dev.serverest.bases.UsuariosBaseTest;
 import dev.serverest.helpers.JsonSchemaValidatorHelper;

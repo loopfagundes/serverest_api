@@ -1,4 +1,4 @@
-package dev.serverest.testcases.contrato.login;
+package dev.serverest.testcases.contrato;
 
 import dev.serverest.bases.LoginBaseTest;
 import dev.serverest.helpers.JsonSchemaValidatorHelper;

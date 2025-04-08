@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeClass;
 
 public class LoginBaseTest extends EndpointConfig {
     public static RequestSpecification loginRequest;
-    protected static String auth;
+    protected static String token;
 
     @BeforeClass
     public void setUp() {

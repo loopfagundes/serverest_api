@@ -15,4 +15,5 @@ public class EndpointConfig {
     protected static final String BASE_URI = properties.getProperty("BASE_URI");
     protected static final String PATH_USUARIOS = properties.getProperty("PATH_USUARIOS");
     protected static final String PATH_LOGIN = properties.getProperty("PATH_LOGIN");
+    protected static final String PATH_PRODUTOS = properties.getProperty("PATH_PRODUTOS");
 }

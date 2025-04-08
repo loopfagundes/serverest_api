@@ -27,6 +27,6 @@ public class LoginTestCase extends LoginBaseTest {
                     .log().all()
                     .body(JsonSchemaValidatorHelper.validateJson("login/efetura_login"))
                 .extract().path("authorization");
-        PropertiesManager.setProperty("authorize", "auth", "TOKEN", token);
+        PropertiesManager.setProperty("authorize", "token", "TOKEN", token);
     }
 }

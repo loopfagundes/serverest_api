@@ -11,14 +11,16 @@ import io.restassured.specification.RequestSpecification;
 public class ProdutosBaseTest extends EndpointConfig {
     public static RequestSpecification pathProdutosRequest;
     public static RequestSpecification cadastrarProdutoRequest;
+    public static RequestSpecification editarProdutoRequest;
     public static RequestSpecification deleteProdutoRequest;
     protected static String idProduto;
 
     @BeforeClass
     public void setUp() {
+        deleteProduto();
         pathProdutos();
         cadastrarProdutos();
-        deleteProduto();
+        editarProduto();
     }
 
     private void pathProdutos() {
@@ -34,7 +36,7 @@ public class ProdutosBaseTest extends EndpointConfig {
                 .setBaseUri(BASE_URI)
                 .setBasePath(PATH_PRODUTOS)
                 .addHeader("Authorization", TOKEN)
-                .setBody(ProdutoStub.cadastrarProdutoDto())
+                .setBody(ProdutoStub.cadastrarProdutoStub())
                 .setContentType(ContentType.JSON)
                 .build();
     }
@@ -44,6 +46,16 @@ public class ProdutosBaseTest extends EndpointConfig {
                 .setBaseUri(BASE_URI)
                 .setBasePath(PATH_PRODUTOS)
                 .addHeader("Authorization", TOKEN)
+                .setContentType(ContentType.JSON)
+                .build();
+    }
+
+    private void editarProduto() {
+        editarProdutoRequest = new RequestSpecBuilder()
+                .setBaseUri(BASE_URI)
+                .setBasePath(PATH_PRODUTOS)
+                .addHeader("Authorization", TOKEN)
+                .setBody(ProdutoStub.editarProdutoStub())
                 .setContentType(ContentType.JSON)
                 .build();
     }

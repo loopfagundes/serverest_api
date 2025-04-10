@@ -12,8 +12,8 @@ import io.restassured.RestAssured;
 public class ProdutosTestCase extends ProdutosBaseTest {
 
     @Epic("Teste de Produtos")
-    @Feature("[GET] - Teste para buscar a lista dos produtos cadastrados.")
-    @Description("Deve retornar 200 e a lista completa dos produtos cadastrados.")
+    @Feature("[DELETE] - Teste para exculir o ID de produto cadastrado.")
+    @Description("Deve retornar 200 e confirmar que o produto foi deletado.")
     @Test(priority = 1)
     public void deleteProduto200() {
         RestAssured.given()

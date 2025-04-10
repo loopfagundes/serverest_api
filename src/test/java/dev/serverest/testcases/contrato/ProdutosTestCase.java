@@ -28,7 +28,7 @@ public class ProdutosTestCase extends ProdutosBaseTest {
     @Epic("Teste de Produtos")
     @Feature("[POST] - Teste para cadastrar um produto.")
     @Description("Deve retornar 201 e a lista completa dos produtos cadastrados.")
-    @Test(priority = 1)
+    @Test(priority = 2)
     public void cadastrarUmProduto201() {
         idProduto =
             RestAssured.given()
@@ -45,7 +45,7 @@ public class ProdutosTestCase extends ProdutosBaseTest {
     @Epic("Teste de Produtos")
     @Feature("[GET] - Teste para buscar a lista dos produtos cadastrados.")
     @Description("Deve retornar 200 e a lista completa dos produtos cadastrados.")
-    @Test(priority = 1)
+    @Test(priority = 3)
     public void buscarAListaDosProdutos200() {
         RestAssured.given()
                     .spec(pathProdutosRequest)

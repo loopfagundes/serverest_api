@@ -3,6 +3,7 @@ package dev.serverest.testcases.contrato;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
 import dev.serverest.bases.ProdutosBaseTest;
+import dev.serverest.helpers.JsonSchemaValidatorHelper;
 import dev.serverest.managers.PropertiesManager;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -22,7 +23,8 @@ public class ProdutosTestCase extends ProdutosBaseTest {
                     .delete("/" + ID_PRODUTO)
                 .then()
                     .statusCode(HttpStatus.SC_OK)
-                    .log().all();
+                    .log().all()
+                    .body(JsonSchemaValidatorHelper.validateJson("produtos/delete_produto"));
     }
 
     @Epic("Teste de Produtos")
@@ -38,6 +40,7 @@ public class ProdutosTestCase extends ProdutosBaseTest {
                     .then()
                         .statusCode(HttpStatus.SC_CREATED)
                         .log().all()
+                        .body(JsonSchemaValidatorHelper.validateJson("produtos/cadastrar_produto"))
                         .extract().path("_id");
             PropertiesManager.setProperty("properties", "idProduto", "ID_PRODUTO", idProduto);
     }
@@ -53,7 +56,8 @@ public class ProdutosTestCase extends ProdutosBaseTest {
                     .get()
                 .then()
                     .statusCode(HttpStatus.SC_OK)
-                    .log().all();
+                    .log().all()
+                    .body(JsonSchemaValidatorHelper.validateJson("produtos/buscar_todos_produtos"));
     }
 
     @Epic("Teste de Produtos")
@@ -67,7 +71,8 @@ public class ProdutosTestCase extends ProdutosBaseTest {
                     .put("/" + idProduto)
                 .then()
                     .statusCode(HttpStatus.SC_OK)
-                    .log().all();
+                    .log().all()
+                    .body(JsonSchemaValidatorHelper.validateJson("produtos/editar_id_produto"));
     }
 
     @Epic("Teste de Produtos")
@@ -81,6 +86,7 @@ public class ProdutosTestCase extends ProdutosBaseTest {
                     .get("/" + idProduto)
                 .then()
                     .statusCode(HttpStatus.SC_OK)
-                    .log().all();
+                    .log().all()
+                    .body(JsonSchemaValidatorHelper.validateJson("produtos/buscar_id_produto"));
     }
 }

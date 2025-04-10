@@ -2,7 +2,7 @@
 <suite name="Suite de Testes API">
     <test name="Teste de API - Usuarios">
         <classes>
-            <class name="dev.serverest.testcases.contrato.usuarios.UsuariosTestCase">
+            <class name="dev.serverest.testcases.contrato.UsuariosTestCase">
                 <methods>
                     <include name="postCadastrarUmNovoUsuario201"/>
                     <include name="getBuscarTodosOsUsuarioCadastradosNaLista200"/>
@@ -15,9 +15,20 @@
     </test>
     <test name="Teste de API - Login">
         <classes>
-            <class name="dev.serverest.testcases.contrato.login.LoginTestCase">
+            <class name="dev.serverest.testcases.contrato.LoginTestCase">
                 <methods>
                     <include name="efeturaLogin200"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name ="Teste de API - Produtos">
+        <classes>
+            <class name="dev.serverest.testcases.contrato.ProdutosTestCase">
+                <methods>
+                    <include name="deleteProduto200"/>
+                    <include name="cadastrarUmProduto201"/>
+                    <include name="buscarAListaDosProdutos200"/>
                 </methods>
             </class>
         </classes>

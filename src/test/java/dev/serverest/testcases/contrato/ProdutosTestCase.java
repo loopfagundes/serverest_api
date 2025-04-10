@@ -40,7 +40,7 @@ public class ProdutosTestCase extends ProdutosBaseTest {
                         .log().all()
                         .extract().path("_id");
             PropertiesManager.setProperty("properties", "idProduto", "ID_PRODUTO", idProduto);
-        }
+    }
 
     @Epic("Teste de Produtos")
     @Feature("[GET] - Teste para buscar a lista dos produtos cadastrados.")
@@ -51,6 +51,34 @@ public class ProdutosTestCase extends ProdutosBaseTest {
                     .spec(pathProdutosRequest)
                 .when()
                     .get()
+                .then()
+                    .statusCode(HttpStatus.SC_OK)
+                    .log().all();
+    }
+
+    @Epic("Teste de Produtos")
+    @Feature("[PUT] - Teste para fazer editar um produto cadastrado.")
+    @Description("Deve retornar 200 e um produto cadastrado foi editado.")
+    @Test(priority = 5)
+    public void editarProduto200() {
+        RestAssured.given()
+                    .spec(editarProdutoRequest)
+                .when()
+                    .put("/" + idProduto)
+                .then()
+                    .statusCode(HttpStatus.SC_OK)
+                    .log().all();
+    }
+
+    @Epic("Teste de Produtos")
+    @Feature("[GET] - Teste para buscar o ID do produto cadastrado.")
+    @Description("Deve retornar 200 e a lista o ID do produto cadastrado.")
+    @Test(priority = 6)
+    public void buscarIDDoProduto200() {
+        RestAssured.given()
+                    .spec(pathProdutosRequest)
+                .when()
+                    .get("/" + idProduto)
                 .then()
                     .statusCode(HttpStatus.SC_OK)
                     .log().all();

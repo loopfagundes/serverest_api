@@ -8,7 +8,6 @@ import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.BeforeClass;
 
 public class UsuariosBaseTest extends EndpointConfig {
-    public static RequestSpecification baseUrl;
     public static RequestSpecification pathUsuariosRequest;
     public static RequestSpecification cadastrarUsuarioRequest;
     public static RequestSpecification editarUsuarioRequest;
@@ -16,17 +15,9 @@ public class UsuariosBaseTest extends EndpointConfig {
 
     @BeforeClass
     public void setUp() {
-        baseUrl();
         pathUsuarios();
         cadastrarDoUsuario();
         editarUsuario();
-    }
-
-    private void baseUrl() {
-        baseUrl = new RequestSpecBuilder()
-                .setBaseUri(BASE_URI)
-                .setContentType(ContentType.JSON)
-                .build();
     }
 
     private void pathUsuarios() {
@@ -41,7 +32,7 @@ public class UsuariosBaseTest extends EndpointConfig {
         cadastrarUsuarioRequest = new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
                 .setBasePath(PATH_USUARIOS)
-                .setBody(UsuarioStub.cadastrarUsuarioDto())
+                .setBody(UsuarioStub.cadastrarUsuarioStub())
                 .setContentType(ContentType.JSON)
                 .build();
     }
@@ -50,7 +41,7 @@ public class UsuariosBaseTest extends EndpointConfig {
         editarUsuarioRequest = new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
                 .setBasePath(PATH_USUARIOS)
-                .setBody(UsuarioStub.editarUsuarioDto())
+                .setBody(UsuarioStub.editarUsuarioStub())
                 .setContentType(ContentType.JSON)
                 .build();
     }

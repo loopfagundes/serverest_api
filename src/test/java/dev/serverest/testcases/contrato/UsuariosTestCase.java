@@ -1,6 +1,7 @@
-package dev.serverest.testcases.usuarios;
+package dev.serverest.testcases.contrato;
 
 import dev.serverest.bases.UsuariosBaseTest;
+import dev.serverest.helpers.JsonSchemaValidatorHelper;
 import dev.serverest.managers.PropertiesManager;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -22,6 +23,7 @@ public class UsuariosTestCase extends UsuariosBaseTest {
                     .delete("/" + ID_USER)
                 .then()
                     .statusCode(HttpStatus.SC_OK)
+                .body(JsonSchemaValidatorHelper.validateJson("usuarios/delete_usuario"))
                     .log().all();
     }
 
@@ -36,6 +38,7 @@ public class UsuariosTestCase extends UsuariosBaseTest {
                     .get()
                 .then()
                     .statusCode(HttpStatus.SC_OK)
+                .body(JsonSchemaValidatorHelper.validateJson("usuarios/buscar_todos_usuarios"))
                     .log().all();
     }
 
@@ -52,6 +55,7 @@ public class UsuariosTestCase extends UsuariosBaseTest {
                         .then()
                             .statusCode(HttpStatus.SC_CREATED)
                             .log().all()
+                            .body(JsonSchemaValidatorHelper.validateJson("usuarios/cadastrar_usuario"))
                             .extract().path("_id");
         PropertiesManager.setProperty("authorize", "idUser", "ID_USER", idUser);
     }
@@ -67,6 +71,7 @@ public class UsuariosTestCase extends UsuariosBaseTest {
                     .get("/" + idUser)
                 .then()
                     .statusCode(HttpStatus.SC_OK)
+                    .body(JsonSchemaValidatorHelper.validateJson("usuarios/buscar_id_usuario"))
                     .log().all();
     }
 
@@ -81,6 +86,7 @@ public class UsuariosTestCase extends UsuariosBaseTest {
                     .put("/" + idUser)
                 .then()
                     .statusCode(HttpStatus.SC_OK)
+                    .body(JsonSchemaValidatorHelper.validateJson("usuarios/editar_id_usuario"))
                     .log().all();
     }
 }

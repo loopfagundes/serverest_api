@@ -23,7 +23,7 @@ public class UsuariosTestCase extends UsuariosBaseTest {
                     .delete("/" + ID_USER)
                 .then()
                     .statusCode(HttpStatus.SC_OK)
-                .body(JsonSchemaValidatorHelper.validateJson("usuarios/delete_user"))
+                .body(JsonSchemaValidatorHelper.validateJson("usuarios/delete_usuario"))
                     .log().all();
     }
 

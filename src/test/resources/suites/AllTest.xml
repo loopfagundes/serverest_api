@@ -29,6 +29,8 @@
                     <include name="deleteProduto200"/>
                     <include name="cadastrarUmProduto201"/>
                     <include name="buscarAListaDosProdutos200"/>
+                    <include name="editarProduto200"></include>
+                    <include name="buscarIDDoProduto200"></include>
                 </methods>
             </class>
         </classes>

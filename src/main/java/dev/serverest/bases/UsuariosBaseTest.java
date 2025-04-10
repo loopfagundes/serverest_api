@@ -32,7 +32,7 @@ public class UsuariosBaseTest extends EndpointConfig {
         cadastrarUsuarioRequest = new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
                 .setBasePath(PATH_USUARIOS)
-                .setBody(UsuarioStub.cadastrarUsuarioDto())
+                .setBody(UsuarioStub.cadastrarUsuarioStub())
                 .setContentType(ContentType.JSON)
                 .build();
     }
@@ -41,7 +41,7 @@ public class UsuariosBaseTest extends EndpointConfig {
         editarUsuarioRequest = new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
                 .setBasePath(PATH_USUARIOS)
-                .setBody(UsuarioStub.editarUsuarioDto())
+                .setBody(UsuarioStub.editarUsuarioStub())
                 .setContentType(ContentType.JSON)
                 .build();
     }

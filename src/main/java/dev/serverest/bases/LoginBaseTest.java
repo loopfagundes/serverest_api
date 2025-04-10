@@ -20,7 +20,7 @@ public class LoginBaseTest extends EndpointConfig {
         loginRequest = new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
                 .setBasePath(PATH_LOGIN)
-                .setBody(LoginStub.loginUsuario())
+                .setBody(LoginStub.loginUsuarioStub())
                 .setContentType(ContentType.JSON)
                 .build();
     }

@@ -3,21 +3,19 @@ package dev.serverest.stubs;
 import dev.serverest.dto.UsuarioDTO;
 
 public class UsuarioStub {
-    public static UsuarioDTO cadastrarUsuarioDto() {
+    public static UsuarioDTO cadastrarUsuarioStub() {
         return new UsuarioDTO(
                 "Luciano",
                 "test@testng.com",
                 "secret123",
-                "true"
-        );
+                "true");
     }
 
-    public static UsuarioDTO editarUsuarioDto() {
+    public static UsuarioDTO editarUsuarioStub() {
         return new UsuarioDTO(
                 "Luciano Rest Assured",
                 "test@testng.com",
                 "secret123",
-                "true"
-        );
+                "true");
     }
 }

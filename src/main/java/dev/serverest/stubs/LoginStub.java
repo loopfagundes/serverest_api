@@ -3,10 +3,9 @@ package dev.serverest.stubs;
 import dev.serverest.dto.LoginDTO;
 
 public class LoginStub {
-    public static LoginDTO loginUsuario() {
+    public static LoginDTO loginUsuarioStub() {
         return new LoginDTO(
                 "test@testng.com",
-                "secret123"
-        );
+                "secret123");
     }
 }

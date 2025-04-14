@@ -1,17 +1,16 @@
 package dev.serverest.dto;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.*;
-
-import java.util.Properties;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@JsonPropertyOrder({"idProduto", "quantidade"})
+@JsonPropertyOrder({"produtos"})
 public class CarrinhoDTO {
-    private Properties idProduto;
-    private int quantidade;
+    private List<ProdutoNoCarrinhoDTO> produtos;
 }

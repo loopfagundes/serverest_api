@@ -29,7 +29,7 @@ public class ProdutosTestCase extends ProdutosBaseTest {
 
     @Epic("Teste de Produtos")
     @Feature("[POST] - Teste para cadastrar um produto.")
-    @Description("Deve retornar 201 e a lista completa dos produtos cadastrados.")
+    @Description("Deve retornar 201 e o produto cadastrado.")
     @Test(priority = 2)
     public void cadastrarUmProduto201() {
         idProduto =

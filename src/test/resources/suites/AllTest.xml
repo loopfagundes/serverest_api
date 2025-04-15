@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite de Testes API">
+<suite name="Suite de Testes API - Fluxo de compra">
     <test name="Teste de API - Usuarios">
         <classes>
             <class name="dev.serverest.testcases.contrato.UsuariosTestCase">
@@ -31,6 +31,18 @@
                     <include name="buscarAListaDosProdutos200"/>
                     <include name="editarProduto200"></include>
                     <include name="buscarIDDoProduto200"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Teste de API - Carrinhos">
+        <classes>
+            <class name="dev.serverest.testcases.contrato.CarrinhoTestCase">
+                <methods>
+                    <include name="buscarTodosCarrinhos200"></include>
+                    <include name="cadastrarUmCarrinho201"></include>
+                    <include name="buscarPorIDDoCarrinhos200"></include>
+                    <include name="concluirACompraDoCarrinho200"></include>
                 </methods>
             </class>
         </classes>

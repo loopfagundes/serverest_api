@@ -12,9 +12,11 @@ public class EndpointConfig {
     protected static final String ID_USER = PropertiesManager.loadProperties("authorize", "idUser").getProperty("ID_USER");
     protected static final String TOKEN = PropertiesManager.loadProperties("authorize", "token").getProperty("TOKEN");
     protected static final String ID_PRODUTO = PropertiesManager.loadProperties("properties", "idProduto").getProperty("ID_PRODUTO");
+    protected static final String ID_CARRINHO = PropertiesManager.loadProperties("properties", "idCarrinho").getProperty("ID_CARRINHO");
 
     protected static final String BASE_URI = properties.getProperty("BASE_URI");
     protected static final String PATH_USUARIOS = properties.getProperty("PATH_USUARIOS");
     protected static final String PATH_LOGIN = properties.getProperty("PATH_LOGIN");
     protected static final String PATH_PRODUTOS = properties.getProperty("PATH_PRODUTOS");
+    protected static final String PATH_CARRINHOS = properties.getProperty("PATH_CARRINHOS");
 }

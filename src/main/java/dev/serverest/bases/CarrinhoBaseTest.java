@@ -11,6 +11,8 @@ import io.restassured.specification.RequestSpecification;
 public class CarrinhoBaseTest extends EndpointConfig {
     public static RequestSpecification pathCarrinhoRequest;
     public static RequestSpecification cadastrarCarrinhoRquest;
+    protected static String idCarrinho;
+
 
     @BeforeClass
     public void setUp() {

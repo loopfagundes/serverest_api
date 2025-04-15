@@ -2,7 +2,7 @@ package dev.serverest.testcases.contrato;
 
 import dev.serverest.bases.LoginBaseTest;
 import dev.serverest.helpers.JsonSchemaValidatorHelper;
-import dev.serverest.managers.PropertiesManager;
+import dev.serverest.managers.TokenManager;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -27,6 +27,6 @@ public class LoginTestCase extends LoginBaseTest {
                     .log().all()
                     .body(JsonSchemaValidatorHelper.validateJson("login/efetura_login"))
                 .extract().path("authorization");
-        PropertiesManager.setProperty("authorize", "token", "TOKEN", token);
+                TokenManager.setToken(token);
     }
 }

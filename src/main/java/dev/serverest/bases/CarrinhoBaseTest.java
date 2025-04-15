@@ -3,6 +3,7 @@ package dev.serverest.bases;
 import org.testng.annotations.BeforeClass;
 
 import dev.serverest.endponits.EndpointConfig;
+import dev.serverest.managers.TokenManager;
 import dev.serverest.stubs.CarrinhoStub;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
@@ -24,7 +25,7 @@ public class CarrinhoBaseTest extends EndpointConfig {
         pathCarrinhoRequest = new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
                 .setBasePath(PATH_CARRINHOS)
-                .addHeader("Authorization", TOKEN)
+                .addHeader("Authorization", TokenManager.getToken())
                 .setContentType(ContentType.JSON)
                 .build();
     }
@@ -33,7 +34,7 @@ public class CarrinhoBaseTest extends EndpointConfig {
         cadastrarCarrinhoRquest = new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
                 .setBasePath(PATH_CARRINHOS)
-                .addHeader("Authorization", TOKEN)
+                .addHeader("Authorization", TokenManager.getToken())
                 .setBody(CarrinhoStub.carrinhoStub())
                 .setContentType(ContentType.JSON)
                 .build();

@@ -53,7 +53,7 @@ public class CarrinhoTestCase extends CarrinhoBaseTest {
         RestAssured.given()
                     .spec(pathCarrinhoRequest)
                 .when()
-                    .get("/" + ID_CARRINHO)
+                    .get("/" + idCarrinho)
                 .then()
                     .statusCode(HttpStatus.SC_OK)
                     .log().all()

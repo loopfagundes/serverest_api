@@ -3,6 +3,7 @@ package dev.serverest.bases;
 import org.testng.annotations.BeforeClass;
 
 import dev.serverest.endponits.EndpointConfig;
+import dev.serverest.managers.TokenManager;
 import dev.serverest.stubs.ProdutoStub;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
@@ -35,7 +36,7 @@ public class ProdutosBaseTest extends EndpointConfig {
         cadastrarProdutoRequest = new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
                 .setBasePath(PATH_PRODUTOS)
-                .addHeader("Authorization", TOKEN)
+                .addHeader("Authorization", TokenManager.getToken())
                 .setBody(ProdutoStub.cadastrarProdutoStub())
                 .setContentType(ContentType.JSON)
                 .build();
@@ -45,7 +46,7 @@ public class ProdutosBaseTest extends EndpointConfig {
         deleteProdutoRequest = new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
                 .setBasePath(PATH_PRODUTOS)
-                .addHeader("Authorization", TOKEN)
+                .addHeader("Authorization", TokenManager.getToken())
                 .setContentType(ContentType.JSON)
                 .build();
     }
@@ -54,7 +55,7 @@ public class ProdutosBaseTest extends EndpointConfig {
         editarProdutoRequest = new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
                 .setBasePath(PATH_PRODUTOS)
-                .addHeader("Authorization", TOKEN)
+                .addHeader("Authorization", TokenManager.getToken())
                 .setBody(ProdutoStub.editarProdutoStub())
                 .setContentType(ContentType.JSON)
                 .build();

@@ -11,21 +11,6 @@ import io.qameta.allure.Feature;
 import io.restassured.RestAssured;
 
 public class CarrinhoTestCase extends CarrinhoBaseTest {
-
-    @Epic("Teste de Carrinhos")
-    @Feature("[GET] - Teste para buscar todos carrinhos cadastrados.")
-    @Description("Deve retornar 200 e a lista completa dos carrinhos cadastrados.")
-    @Test(priority = 1)
-    public void buscarTodosCarrinhos200() {
-        RestAssured.given()
-                    .spec(pathCarrinhoRequest)
-                .when()
-                    .get()
-                .then()
-                    .statusCode(HttpStatus.SC_OK)
-                    .log().all()
-                    .body(JsonSchemaValidatorHelper.validateJson("carrinhos/buscar_todos_carrinhos"));
-    }
     
     @Epic("Teste de Carrinhos")
     @Feature("[POST] - Teste para cadastrar como adicionar no carrinho.")
@@ -43,6 +28,21 @@ public class CarrinhoTestCase extends CarrinhoBaseTest {
                         .body(JsonSchemaValidatorHelper.validateJson("carrinhos/cadastrar_carrinho"))
                         .extract().path("_id");
             PropertiesManager.setProperty("properties", "idCarrinho", "ID_CARRINHO", idCarrinho);
+    }
+
+    @Epic("Teste de Carrinhos")
+    @Feature("[GET] - Teste para buscar todos carrinhos cadastrados.")
+    @Description("Deve retornar 200 e a lista completa dos carrinhos cadastrados.")
+    @Test(priority = 1)
+    public void buscarTodosCarrinhos200() {
+        RestAssured.given()
+                    .spec(pathCarrinhoRequest)
+                .when()
+                    .get()
+                .then()
+                    .statusCode(HttpStatus.SC_OK)
+                    .log().all()
+                    .body(JsonSchemaValidatorHelper.validateJson("carrinhos/buscar_todos_carrinhos"));
     }
 
     @Epic("Teste de Carrinhos")

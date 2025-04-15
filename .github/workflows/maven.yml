@@ -21,8 +21,13 @@ jobs:
         distribution: 'temurin'
         cache: maven
     
-    - name: Execução Serverest
-      run: npx serverest@latest
+    - name: Instalar dependências do Node
+      run: npm install -g serverest
+
+    - name: Iniciar Serverest em background
+      run: |
+          nohup npx serverest@latest > serverest.log 2>&1 &
+          sleep 5 # Espera o server subir
 
     - name: Maven Clean
       run: mvn clean

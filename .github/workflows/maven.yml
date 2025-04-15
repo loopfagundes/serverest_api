@@ -21,6 +21,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
     
+    - name: Execução Serverest
+      run: npx serverest@latest
+
     - name: Maven Clean
       run: mvn clean
 

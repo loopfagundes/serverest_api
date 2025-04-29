@@ -47,7 +47,7 @@ public class UsuariosTestCase extends UsuariosBaseTest {
     @Description("Deve retornar 201 e usuário cadastrado.")
     @Test(priority = 3)
     public void postCadastrarUmNovoUsuarioComAdminTrue201() {
-        idUserAdminTrue = RestAssured.given()
+        idUser = RestAssured.given()
                 .spec(cadastrarUsuarioRequest)
                 .when()
                 .post()
@@ -56,25 +56,8 @@ public class UsuariosTestCase extends UsuariosBaseTest {
                 .log().all()
                 .body(JsonSchemaValidatorHelper.validateJson("usuarios/cadastrar_usuario"))
                 .extract().path("_id");
-        PropertiesManager.setProperty("authorize", "idUser", "ID_USER_ADMIN_TRUE", idUserAdminTrue);
+        PropertiesManager.setProperty("authorize", "idUser", "ID_USER_ADMIN_TRUE", idUser);
     }
-
-    // @Epic("Teste de Usuarios")
-    // @Feature("[POST] - Teste para fazer cadastrar um novo usuário com adminstrador FALSE")
-    // @Description("Deve retornar 201 e usuário cadastrado.")
-    // @Test(priority = 3)
-    // public void postCadastrarUmNovoUsuarioComAdminFalse201() {
-    //     idUserAdminTrue = RestAssured.given()
-    //             .spec(cadastrarUsuarioRequest)
-    //             .when()
-    //             .post()
-    //             .then()
-    //             .statusCode(HttpStatus.SC_CREATED)
-    //             .log().all()
-    //             .body(JsonSchemaValidatorHelper.validateJson("usuarios/cadastrar_usuario"))
-    //             .extract().path("_id");
-    //     PropertiesManager.setProperty("authorize", "idUser", "ID_USER", idUserAdminTrue);
-    // }
 
     @Epic("Teste de Usuarios")
     @Feature("[GET] - Teste para buscar por ID um usuário cadastrado na lista.")
@@ -84,7 +67,7 @@ public class UsuariosTestCase extends UsuariosBaseTest {
         RestAssured.given()
                 .spec(pathUsuariosRequest)
                 .when()
-                .get("/" + idUserAdminTrue)
+                .get("/" + idUser)
                 .then()
                 .statusCode(HttpStatus.SC_OK)
                 .body(JsonSchemaValidatorHelper.validateJson("usuarios/buscar_id_usuario"))
@@ -99,7 +82,7 @@ public class UsuariosTestCase extends UsuariosBaseTest {
         RestAssured.given()
                 .spec(editarUsuarioRequest)
                 .when()
-                .put("/" + idUserAdminTrue)
+                .put("/" + idUser)
                 .then()
                 .statusCode(HttpStatus.SC_OK)
                 .body(JsonSchemaValidatorHelper.validateJson("usuarios/editar_id_usuario"))

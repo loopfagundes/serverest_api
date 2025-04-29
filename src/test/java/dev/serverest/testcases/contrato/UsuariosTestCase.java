@@ -18,13 +18,13 @@ public class UsuariosTestCase extends UsuariosBaseTest {
     @Test(priority = 1)
     public void deleteUsuario200() {
         RestAssured.given()
-                    .spec(pathUsuariosRequest)
+                .spec(pathUsuariosRequest)
                 .when()
-                    .delete("/" + ID_USER)
+                .delete("/" + ID_USER_ADMIN_TRUE)
                 .then()
-                    .statusCode(HttpStatus.SC_OK)
+                .statusCode(HttpStatus.SC_OK)
                 .body(JsonSchemaValidatorHelper.validateJson("usuarios/delete_usuario"))
-                    .log().all();
+                .log().all();
     }
 
     @Epic("Teste de Usuarios")
@@ -33,32 +33,48 @@ public class UsuariosTestCase extends UsuariosBaseTest {
     @Test(priority = 2)
     public void getBuscarTodosOsUsuarioCadastradosNaLista200() {
         RestAssured.given()
-                    .spec(pathUsuariosRequest)
+                .spec(pathUsuariosRequest)
                 .when()
-                    .get()
+                .get()
                 .then()
-                    .statusCode(HttpStatus.SC_OK)
+                .statusCode(HttpStatus.SC_OK)
                 .body(JsonSchemaValidatorHelper.validateJson("usuarios/buscar_todos_usuarios"))
-                    .log().all();
+                .log().all();
     }
 
     @Epic("Teste de Usuarios")
-    @Feature("[POST] - Teste para fazer cadastrar um novo usuário")
+    @Feature("[POST] - Teste para fazer cadastrar um novo usuário com adminstrador TRUE")
     @Description("Deve retornar 201 e usuário cadastrado.")
     @Test(priority = 3)
-    public void postCadastrarUmNovoUsuario201() {
-        idUser =
-                RestAssured.given()
-                            .spec(cadastrarUsuarioRequest)
-                        .when()
-                            .post()
-                        .then()
-                            .statusCode(HttpStatus.SC_CREATED)
-                            .log().all()
-                            .body(JsonSchemaValidatorHelper.validateJson("usuarios/cadastrar_usuario"))
-                            .extract().path("_id");
-        PropertiesManager.setProperty("authorize", "idUser", "ID_USER", idUser);
+    public void postCadastrarUmNovoUsuarioComAdminTrue201() {
+        idUserAdminTrue = RestAssured.given()
+                .spec(cadastrarUsuarioRequest)
+                .when()
+                .post()
+                .then()
+                .statusCode(HttpStatus.SC_CREATED)
+                .log().all()
+                .body(JsonSchemaValidatorHelper.validateJson("usuarios/cadastrar_usuario"))
+                .extract().path("_id");
+        PropertiesManager.setProperty("authorize", "idUser", "ID_USER_ADMIN_TRUE", idUserAdminTrue);
     }
+
+    // @Epic("Teste de Usuarios")
+    // @Feature("[POST] - Teste para fazer cadastrar um novo usuário com adminstrador FALSE")
+    // @Description("Deve retornar 201 e usuário cadastrado.")
+    // @Test(priority = 3)
+    // public void postCadastrarUmNovoUsuarioComAdminFalse201() {
+    //     idUserAdminTrue = RestAssured.given()
+    //             .spec(cadastrarUsuarioRequest)
+    //             .when()
+    //             .post()
+    //             .then()
+    //             .statusCode(HttpStatus.SC_CREATED)
+    //             .log().all()
+    //             .body(JsonSchemaValidatorHelper.validateJson("usuarios/cadastrar_usuario"))
+    //             .extract().path("_id");
+    //     PropertiesManager.setProperty("authorize", "idUser", "ID_USER", idUserAdminTrue);
+    // }
 
     @Epic("Teste de Usuarios")
     @Feature("[GET] - Teste para buscar por ID um usuário cadastrado na lista.")
@@ -66,13 +82,13 @@ public class UsuariosTestCase extends UsuariosBaseTest {
     @Test(priority = 4)
     public void getBuscarPorIdDoUsuarioCadastradoNaLista200() {
         RestAssured.given()
-                    .spec(pathUsuariosRequest)
+                .spec(pathUsuariosRequest)
                 .when()
-                    .get("/" + idUser)
+                .get("/" + idUserAdminTrue)
                 .then()
-                    .statusCode(HttpStatus.SC_OK)
-                    .body(JsonSchemaValidatorHelper.validateJson("usuarios/buscar_id_usuario"))
-                    .log().all();
+                .statusCode(HttpStatus.SC_OK)
+                .body(JsonSchemaValidatorHelper.validateJson("usuarios/buscar_id_usuario"))
+                .log().all();
     }
 
     @Epic("Teste de Usuarios")
@@ -81,12 +97,12 @@ public class UsuariosTestCase extends UsuariosBaseTest {
     @Test(priority = 5)
     public void putEditarUmUsuario200() {
         RestAssured.given()
-                    .spec(editarUsuarioRequest)
+                .spec(editarUsuarioRequest)
                 .when()
-                    .put("/" + idUser)
+                .put("/" + idUserAdminTrue)
                 .then()
-                    .statusCode(HttpStatus.SC_OK)
-                    .body(JsonSchemaValidatorHelper.validateJson("usuarios/editar_id_usuario"))
-                    .log().all();
+                .statusCode(HttpStatus.SC_OK)
+                .body(JsonSchemaValidatorHelper.validateJson("usuarios/editar_id_usuario"))
+                .log().all();
     }
 }

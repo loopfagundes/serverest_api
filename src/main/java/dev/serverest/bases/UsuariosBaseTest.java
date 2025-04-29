@@ -11,7 +11,7 @@ public class UsuariosBaseTest extends EndpointConfig {
     public static RequestSpecification pathUsuariosRequest;
     public static RequestSpecification cadastrarUsuarioRequest;
     public static RequestSpecification editarUsuarioRequest;
-    protected static String idUser;
+    protected static String idUserAdminTrue;
 
     @BeforeClass
     public void setUp() {

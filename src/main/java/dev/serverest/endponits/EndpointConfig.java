@@ -9,8 +9,7 @@ public class EndpointConfig {
     private static final String DEFAULT_FOLDER = "url";
     private static final Properties properties = PropertiesManager.loadProperties(DEFAULT_FILE, DEFAULT_FOLDER);
 
-    protected static final String ID_USER = PropertiesManager.loadProperties("authorize", "idUser").getProperty("ID_USER");
-    protected static final String TOKEN = PropertiesManager.loadProperties("authorize", "token").getProperty("TOKEN");
+    protected static final String ID_USER_ADMIN_TRUE = PropertiesManager.loadProperties("authorize", "idUser").getProperty("ID_USER_ADMIN_TRUE");
     protected static final String ID_PRODUTO = PropertiesManager.loadProperties("properties", "idProduto").getProperty("ID_PRODUTO");
     protected static final String ID_CARRINHO = PropertiesManager.loadProperties("properties", "idCarrinho").getProperty("ID_CARRINHO");
 

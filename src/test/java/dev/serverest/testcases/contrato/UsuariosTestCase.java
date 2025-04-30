@@ -1,3 +1,4 @@
+
 package dev.serverest.testcases.contrato;
 
 import dev.serverest.bases.UsuariosBaseTest;
@@ -20,10 +21,10 @@ public class UsuariosTestCase extends UsuariosBaseTest {
         RestAssured.given()
                     .spec(pathUsuariosRequest)
                 .when()
-                    .delete("/" + ID_USER_ADMIN_TRUE)
+                    .delete("/" + ID_USER)
                 .then()
                     .statusCode(HttpStatus.SC_OK)
-                    .body(JsonSchemaValidatorHelper.validateJson("usuarios/delete_usuario"))
+                .body(JsonSchemaValidatorHelper.validateJson("usuarios/delete_usuario"))
                     .log().all();
     }
 
@@ -38,25 +39,26 @@ public class UsuariosTestCase extends UsuariosBaseTest {
                     .get()
                 .then()
                     .statusCode(HttpStatus.SC_OK)
-                    .body(JsonSchemaValidatorHelper.validateJson("usuarios/buscar_todos_usuarios"))
+                .body(JsonSchemaValidatorHelper.validateJson("usuarios/buscar_todos_usuarios"))
                     .log().all();
     }
 
     @Epic("Teste de Usuarios")
-    @Feature("[POST] - Teste para fazer cadastrar um novo usuário com adminstrador TRUE")
+    @Feature("[POST] - Teste para fazer cadastrar um novo usuário")
     @Description("Deve retornar 201 e usuário cadastrado.")
     @Test(priority = 3)
-    public void postCadastrarUmNovoUsuarioComAdminTrue201() {
-        idUser = RestAssured.given()
-                    .spec(cadastrarUsuarioRequest)
-                .when()
-                    .post()
-                .then()
-                    .statusCode(HttpStatus.SC_CREATED)
-                    .log().all()
-                    .body(JsonSchemaValidatorHelper.validateJson("usuarios/cadastrar_usuario"))
-                    .extract().path("_id");
-        PropertiesManager.setProperty("authorize", "idUser", "ID_USER_ADMIN_TRUE", idUser);
+    public void postCadastrarUmNovoUsuario201() {
+        idUser =
+                RestAssured.given()
+                            .spec(cadastrarUsuarioRequest)
+                        .when()
+                            .post()
+                        .then()
+                            .statusCode(HttpStatus.SC_CREATED)
+                            .log().all()
+                            .body(JsonSchemaValidatorHelper.validateJson("usuarios/cadastrar_usuario"))
+                            .extract().path("_id");
+        PropertiesManager.setProperty("authorize", "idUser", "ID_USER", idUser);
     }
 
     @Epic("Teste de Usuarios")

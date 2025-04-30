@@ -18,13 +18,13 @@ public class UsuariosTestCase extends UsuariosBaseTest {
     @Test(priority = 1)
     public void deleteUsuario200() {
         RestAssured.given()
-                .spec(pathUsuariosRequest)
+                    .spec(pathUsuariosRequest)
                 .when()
-                .delete("/" + ID_USER_ADMIN_TRUE)
+                    .delete("/" + ID_USER_ADMIN_TRUE)
                 .then()
-                .statusCode(HttpStatus.SC_OK)
-                .body(JsonSchemaValidatorHelper.validateJson("usuarios/delete_usuario"))
-                .log().all();
+                    .statusCode(HttpStatus.SC_OK)
+                    .body(JsonSchemaValidatorHelper.validateJson("usuarios/delete_usuario"))
+                    .log().all();
     }
 
     @Epic("Teste de Usuarios")
@@ -33,13 +33,13 @@ public class UsuariosTestCase extends UsuariosBaseTest {
     @Test(priority = 2)
     public void getBuscarTodosOsUsuarioCadastradosNaLista200() {
         RestAssured.given()
-                .spec(pathUsuariosRequest)
+                    .spec(pathUsuariosRequest)
                 .when()
-                .get()
+                    .get()
                 .then()
-                .statusCode(HttpStatus.SC_OK)
-                .body(JsonSchemaValidatorHelper.validateJson("usuarios/buscar_todos_usuarios"))
-                .log().all();
+                    .statusCode(HttpStatus.SC_OK)
+                    .body(JsonSchemaValidatorHelper.validateJson("usuarios/buscar_todos_usuarios"))
+                    .log().all();
     }
 
     @Epic("Teste de Usuarios")
@@ -48,14 +48,14 @@ public class UsuariosTestCase extends UsuariosBaseTest {
     @Test(priority = 3)
     public void postCadastrarUmNovoUsuarioComAdminTrue201() {
         idUser = RestAssured.given()
-                .spec(cadastrarUsuarioRequest)
+                    .spec(cadastrarUsuarioRequest)
                 .when()
-                .post()
+                    .post()
                 .then()
-                .statusCode(HttpStatus.SC_CREATED)
-                .log().all()
-                .body(JsonSchemaValidatorHelper.validateJson("usuarios/cadastrar_usuario"))
-                .extract().path("_id");
+                    .statusCode(HttpStatus.SC_CREATED)
+                    .log().all()
+                    .body(JsonSchemaValidatorHelper.validateJson("usuarios/cadastrar_usuario"))
+                    .extract().path("_id");
         PropertiesManager.setProperty("authorize", "idUser", "ID_USER_ADMIN_TRUE", idUser);
     }
 
@@ -65,13 +65,13 @@ public class UsuariosTestCase extends UsuariosBaseTest {
     @Test(priority = 4)
     public void getBuscarPorIdDoUsuarioCadastradoNaLista200() {
         RestAssured.given()
-                .spec(pathUsuariosRequest)
+                    .spec(pathUsuariosRequest)
                 .when()
-                .get("/" + idUser)
+                    .get("/" + idUser)
                 .then()
-                .statusCode(HttpStatus.SC_OK)
-                .body(JsonSchemaValidatorHelper.validateJson("usuarios/buscar_id_usuario"))
-                .log().all();
+                    .statusCode(HttpStatus.SC_OK)
+                    .body(JsonSchemaValidatorHelper.validateJson("usuarios/buscar_id_usuario"))
+                    .log().all();
     }
 
     @Epic("Teste de Usuarios")
@@ -80,12 +80,12 @@ public class UsuariosTestCase extends UsuariosBaseTest {
     @Test(priority = 5)
     public void putEditarUmUsuario200() {
         RestAssured.given()
-                .spec(editarUsuarioRequest)
+                    .spec(editarUsuarioRequest)
                 .when()
-                .put("/" + idUser)
+                    .put("/" + idUser)
                 .then()
-                .statusCode(HttpStatus.SC_OK)
-                .body(JsonSchemaValidatorHelper.validateJson("usuarios/editar_id_usuario"))
-                .log().all();
+                    .statusCode(HttpStatus.SC_OK)
+                    .body(JsonSchemaValidatorHelper.validateJson("usuarios/editar_id_usuario"))
+                    .log().all();
     }
 }

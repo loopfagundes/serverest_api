@@ -1,3 +1,4 @@
+
 package dev.serverest.testcases.contrato;
 
 import dev.serverest.bases.UsuariosBaseTest;
